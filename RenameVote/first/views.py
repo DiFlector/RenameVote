@@ -1,34 +1,74 @@
 import datetime
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.http import Http404
 from django.shortcuts import render
-from django.urls import reverse
+
+from models import CalcHistory
+
+
+context = {}
+context['author'] = 'Костя ДИКИЙ BRUH'
+context['status'] = 'Костя хочет кушать x2'
 
 
 def index_page(request):
-    return render(request, 'index.html')
 
 
-def about_page(request):
-    return render(request, 'aboutus.html')
+
+    return render(request, 'index.html', context)
+
+def questions_page(request):
 
 
-def authorization_page(request):
-    return render(request, 'autorization.html')
+
+    return render(request, 'questions.html', context)
+
+def Kostyagay_page(request):
 
 
-def contacts_page(request):
-    return render(request, 'contacts.html')
+
+    return render(request, 'Kostyagay.html', context)
+
+def autorization_page(request):
+
+
+
+    return render(request, 'autorization.html', context)
+
+def registration_page(request):
+
+
+
+    return render(request, 'registration.html', context)
+
 
 
 def profile_page(request):
-    return render(request, 'profile.html')
 
 
-def questions_page(request):
-    return render(request, 'questions.html')
+    return render(request, 'profile.html', context)
+
+def news_page(request):
 
 
-def registration_page(request):
-    return render(request, 'registration.html')
+
+    return render(request, 'news.html', context)
+
+
+def calc_page(request):
+    a = request.GET.get('a', '29')
+    b = request.GET.get('b', '23')
+    c = int(a) + int(b)
+
+    record = CalcHistory(date=datetime.datetime.now(),
+                         first=a, second=b, result=c)
+    record.save()
+
+    data = CalcHistory.objects.all()
+
+
+    context = {
+        'first_value': a,
+        'second_value': b,
+        'result': c,
+        'data': data
+    }
+    return render(request, 'calculator.html', context)

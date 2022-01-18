@@ -1,66 +1,87 @@
-<!DOCTYPE HTML>
-<head>
-    <meta charset="utf-8">
-    <title>BRUhzdec</title>
-    <link rel="shortcut icon" href="icons/mainico.png" type="image/x-icon">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="main.css">
-   </head>
-   <body>
+    {% include 'blocks/header.html' %}
 
-    <div class="container px-5 py-24 mx-auto" style="margin-top: 150px;">
 
-        <section class="text-gray-600 body-font">
-            <div class="container">
-                <div class="lg:w-1/2 md:w-1/2 bg-gray-100  p-8 flex flex-col md:mr-auto ml-auto w-full mt-10 md:mt-0" style="border-radius: 5px;">
 
-                    <form action="vendor/signup.php" method="post">
-                        <label>ФИО</label>
-                        <input type="text" name="full_name" placeholder="Введите свое полное имя">
-                        <label>Логин</label>
-                        <input type="text" name="login" placeholder="Введите свой логин">
-                        <label>Почта</label>
-                        <input type="email" name="email" placeholder="Введите адрес своей почты">
-                        <label>Телефон</label>
-                        <input id="telep" type="tel" name="telep" placeholder="Введите свой номер телефона">
-                        <label>Пароль</label>
-                        <input type="password" name="password" placeholder="Введите пароль">
-                        <label>Подтверждение пароля</label>
-                        <input type="password" name="password_confirm" placeholder="Подтвердите пароль">
-                        <form>
-                            <input type="button" value="Зарегестрироваться" onClick='location.href="profile.html"'>
+    <div class="container px-5 py-24 mx-auto bg-white" style="border-bottom: #2c2c2c solid 5px; border-top: white solid 25px; --tw-bg-opacity: 0.3">
+
+
+            <div class="GHJcont" style="display:inline-block; float: right; height: auto;">
+                <div class="bg-white p-8 flex  flex-col md:mr-auto ml-auto w-full mt-10 md:mt-0" style="width: 100%; border-radius: 9px; --tw-bg-opacity: 0.9">
+                    <form action="vendor/signin.php" method="post">
+                        <h2 class="tracking-widest text-black m-0" style="font-size: 21px;">Регистрация</h2>
+                        <input type="text" name="FIO" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="ФИО">
+
+                        <input type="text" name="login" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="Логин">
+
+                        <input type="text" name="E-mail" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="E-mail">
+
+                        <input type="tel" name="telephon" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="телефон">
+
+                        <input type="password" name="password" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="Пароль">
+
+                        <input type="password" name="confirm_password" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="Подтверждение пароля">
+
+
+
+                            <a class="btn btn-default action-button" role="button" style="margin-top: 15px;" href="/profile">Зарегистрироваться</a>
                             </form>
-                        <p>
-                            У вас уже есть аккаунт? - <a href="autorization.html">авторизируйтесь</a>!
-                        </p>
-                        <p class="msg none">Lorem ipsum.</p>
-                    </form>
+
+                        <p class="msg none">Lorem ipsum dolor sit amet.</p>
+
                 </div>
             </div>
-        </section>
+                  <div class="popularPRES mt-10" style="float: left;">
+                    <div class="h-full border-opacity-60 rounded-lg overflow-hidden">
+                      <div class="p-6" style="border-top: solid 35px black;">
+                        <h2 class="tracking-widest text-black m-0" style="font-size: 30px;">BRUHzdec</h2>
+                        <h1 class="text-black mt-5" style="font-size: 14px;">Крупнейший второсортный сайт страны</h1>
+                        <p class="leading-relaxed mb-3" style="font-size: 21px;">Есть ли мозги у фемок?</p>
+                      </div>
+                    </div>
+                  </div>
+                    <div class="popularPRES mt-10" style="float: left;">
+                        <div class="h-full border-opacity-60 rounded-lg overflow-hidden">
+                      <div class="p-6" style="border-top: solid 35px black;">
+                  <div class="Price_of_regist lg:w-full md:w-full p-4 w-full">
+                    <a class="block relative h-48 rounded overflow-hidden">
+                      <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://i.ibb.co/cFXBm8M/kostyagay.png">
+                    </a>
+                    <div class="mt-4">
+                      <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1" style="font-size: 20px;">CATEGORY: ШАКАЛ ДИКИЙ</h3>
+                      <h2 class="text-gray-900 title-font text-lg font-medium" style="font-size: 15px;">АУФУУФ</h2>
+                      <p class="mt-1">$0.00 or FREE</p>
+                    </div>
+                  </div>
+                      </div>
+                        </div>
+                    </div>
+
+
     </div>
 
-    <footer class="text-gray-50 body-font">
-        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
 
-                <span class="ml-3 text-xl text-black-50">BRUHzdec</span>
-              </a>
-         
-          <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-            <a href="https://www.instagram.com/modatel_atelier/" class="text-gray-500">
-                <img class="w-10 h-10" src="icons/instagram_48px.png">
-            </a>
-            <a href="https://tele.click/modatelru" class="ml-3 text-gray-500">
-              <img class="w-10 h-10" src="icons/telegram_app_48px.png">
-            </a>
-            <a href="https://wa.me/79630344555" class="ml-3 text-gray-500">
-              <img class="w-10 h-10" src="icons/whatsapp_48px.png">
-            </a>
-          </span>
-        </div>
-      </footer>
 
-    </body>
-    </html>
+
+
+
+
+
+
+
+
+
+
+
+    {% include 'blocks/footer.html' %}
+    </div>
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   {% include 'blocks/bcanvas.html' %}
+
+
+</body>
+</html>

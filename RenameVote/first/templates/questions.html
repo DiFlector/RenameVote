@@ -1,212 +1,135 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>BRUhzdec</title>
-    <link rel="shortcut icon" href="icons/mainico.png" type="image/x-icon">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-   </head>
-   <body>
-    <nav class="flex items-center justify-between flex-wrap bg-black p-6 fixed w-full z-10 top-0">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <a class="text-white no-underline hover:text-white hover:no-underline" href="../index.html">
-            <span class="text-2xl pl-2"><i class="em em-grinning"></i> BRUHzdec</span>
-          </a>
-        </div>
-    
-        <div class="block lg:hidden">
-          <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-white hover:border-white">
-            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
-          </button>
-        </div>
-    
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
-          <ul class="list-reset lg:flex justify-end flex-1 items-center">
-            <li class="mr-3">
-              <a class="inline-block py-2 px-4 text-white no-underline" href="../index.html">Главная</a>
-            </li>
-            <li class="mr-3">
-              <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="../questions.html">Опросы</a>
-            </li>
-            <li class="mr-3">
-               <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="../aboutus.html">О нас</a>
-             </li>
-            <li class="mr-3">
-              <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="../contacts.html">Контакты</a>
-            </li>
-            <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"><a href="profile.html">Личный кабинет</a>
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </button>
-          </ul>
-        </div>
-      </nav>
+    {% include 'blocks/header.html' %}
 
-      <section class="text-gray-600 body-font" style="margin-top: 100px;">
-        <div class="container px-5 py-24 mx-auto">
-          <div class="flex flex-wrap -m-4">
-            <div class="p-4 md:w-1/3">
-              <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                
-                <div class="p-6">
-                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">как починить подвал</h2>
-                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Быстро ли работают извилины мозга??</h1>
 
-                  <div class="votes">
-                    <div class="number-of-votes">
-                        <div class="voting-option-name"> <p> Да </p></div>
-                        <div class="scale-one"> </div>
-                    </div>
-                    <div class="number-of-votes">
-                        <div class="voting-option-name"> <p> Нет </p></div>
-                        <div class="scale-two"> </div>
-                    </div>
-                    <div class="number-of-votes">
-                        <div class="voting-option-name"> <p> Возможно </p></div>
-                        <div class="scale-three"> </div>
-                    </div>
+
+    <div class="container px-5 py-24 mx-auto bg-white" style="border-bottom: #2c2c2c solid 5px; border-top: white solid 25px; --tw-bg-opacity: 0.3">
+
+
+            <div class="GHJcont" style="display:inline-block; float: left; height: auto;">
+                <div class="bg-white p-8 flex  flex-col md:mr-auto ml-auto w-full mt-10 md:mt-0" style="width: 100%; border-radius: 9px; --tw-bg-opacity: 0.9">
+                    <form action="vendor/signin.php" method="post">
+                        <h2 class="tracking-widest text-black m-0" style="font-size: 21px;">Создать опрос</h2>
+                        <input type="text" name="name_of_question" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="Название">
+
+                        <input type="text" name="category_of_auestion" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="Категория">
+
+                        <input type="text" name="category_of_auestion" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="Вариант ответа:">
+
+                        <div id="parentId"></div>
+
+                        <input type="button" value="Добавить вопрос" style="margin-top: 15px; margin-bottom: 15px; padding: 5px;" onclick="addQuestion()">
+
+
+
+                            <input type="button" value="Создать" style="margin-top: 15px; margin-bottom: 15px; padding: 5px;" onclick="location.href=&quot;profile.html&quot;">
+                            </form>
+
+                        <p class="msg none">Lorem ipsum dolor sit amet.</p>
+
                 </div>
-
-                  <p class="leading-relaxed mb-3">Мнения экспертов идут к одному, большинство склоняется в сторону - "ДА"</p>
-                  <div class="flex items-center flex-wrap ">
-                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Читать
-                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14"></path>
-                        <path d="M12 5l7 7-7 7"></path>
-                      </svg>
-                    </a>
-                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                      </svg>1.2K
-                    </span>
-                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                      </svg>6
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
-            <div class="p-4 md:w-1/3">
-              <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                
-                <div class="p-6">
-                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">новогодние</h2>
-                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Возможно ли сделать сайт за 2 часа?</h1>
+                  <div class="popularPRES mt-10">
+                    <div class="h-full border-opacity-60 rounded-lg overflow-hidden">
 
-                  <div class="votes">
-                    <div class="number-of-votes">
-                        <div class="voting-option-name"> <p> Да </p></div>
-                        <div class="scale-one"> </div>
+                      <div class="p-6" style="border-top: solid 35px black;">
+                        <h2 class="tracking-widest text-black m-0" style="font-size: 30px;">BRUHzdec</h2>
+                        <h1 class="text-black mt-5" style="font-size: 14px;">Самые популярные опросы со всего RUнета</h1>
+                        <p class="leading-relaxed mb-3" style="font-size: 21px;">Начиная от внезапного исчезновения груди Бузовой, которое произошло столь же внезапно, как падение рубля в 2027-ом году, заканчивая непредсказуемым ростом Биткоина, правда, Илон Маск?</p>
+                      </div>
                     </div>
-                    <div class="number-of-votes">
-                        <div class="voting-option-name"> <p> Нет </p></div>
-                        <div class="scale-two"> </div>
-                    </div>
-                    <div class="number-of-votes">
-                        <div class="voting-option-name"> <p> Возможно </p></div>
-                        <div class="scale-three"> </div>
-                    </div>
-                </div>
-
-                <p class="leading-relaxed mb-3">Мнения экспертов идут к одному, большинство склоняется в сторону - "ДА"</p>
-                  <div class="flex items-center flex-wrap">
-                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Читать
-                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14"></path>
-                        <path d="M12 5l7 7-7 7"></path>
-                      </svg>
-                    </a>
-                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                      </svg>1.2K
-                    </span>
-                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                      </svg>6
-                    </span>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="p-4 md:w-1/3">
-              <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                
-                <div class="p-6">
-                  <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">социальные</h2>
-                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Кто лежит в подвале?</h1>
 
-                  <div class="votes">
-                    <div class="number-of-votes">
-                        <div class="voting-option-name"> <p> Костя </p></div>
-                        <div class="scale-one"> </div>
-                    </div>
-                    <div class="number-of-votes">
-                        <div class="voting-option-name"> <p> Дмиа </p></div>
-                        <div class="scale-two"> </div>
-                    </div>
-                    <div class="number-of-votes">
-                        <div class="voting-option-name"> <p> Лёня </p></div>
-                        <div class="scale-three"> </div>
-                    </div>
-                </div>
 
-                <p class="leading-relaxed mb-3">Мнения экспертов идут к одному, большинство склоняется в сторону - "Костя"</p>
-                  <div class="flex items-center flex-wrap ">
-                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Читать
-                      <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14"></path>
-                        <path d="M12 5l7 7-7 7"></path>
-                      </svg>
-                    </a>
-                    <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                      </svg>1.2K
-                    </span>
-                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                      <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                      </svg>6
-                    </span>
+
+    </div>
+    <div style="margin-top: 50px;"></div>
+    <div class="bg-white down_pol_1">Опросы</div>
+    <div class="bg-white under_pol_1"></div>
+
+
+    <div class="slider">
+    <div class="item">
+
+        <div class="slideText">
+            <div class="mainPRES" style="margin-left: 0px; margin-top: 6rem; height: 380px;">
+                    <div class="h-full border-opacity-60 rounded-lg overflow-hidden" style="border-radius: 20px;">
+                      <div>
+                          <div class="Title_of_question"><h2 class="tracking-widest text-black m-0" style="font-size: 21px;">На сколько долго Костя сможет не смотреть аниме</h2></div>
+                        <div class="p-4">
+                            <div clas="vr_of_category" style="border-bottom: solid 1px black;">Костя гей</div>
+
+                            <div class="answer_open"><div class="vr_of_question">15ч</div>25</div>
+                            <div class="answer_open"><div class="vr_of_question">15ч</div>25</div>
+                            <div class="answer_open"><div class="vr_of_question">15ч</div>25</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
-      <footer class="text-gray-50 body-font">
-        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+    </div>
 
-                <span class="ml-3 text-xl text-black-50">BRUHzdec</span>
-              </a>
-         
-          <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-            <a href="https://www.instagram.com/modatel_atelier/" class="text-gray-500">
-                <img class="w-10 h-10" src="icons/instagram_48px.png">
-            </a>
-            <a href="https://tele.click/modatelru" class="ml-3 text-gray-500">
-              <img class="w-10 h-10" src="icons/telegram_app_48px.png">
-            </a>
-            <a href="https://wa.me/79630344555" class="ml-3 text-gray-500">
-              <img class="w-10 h-10" src="icons/whatsapp_48px.png">
-            </a>
-          </span>
+    <div class="item">
+
+        <div class="slideText">
+            <div class="mainPRES" style="margin-left: 0px; margin-top: 6rem; height: 380px;">
+                    <div class="h-full border-opacity-60 rounded-lg overflow-hidden" style="border-radius: 20px;">
+                      <div>
+                          <div class="Title_of_question"><h2 class="tracking-widest text-black m-0" style="font-size: 21px;">На сколько долго Костя сможет не смотреть аниме</h2></div>
+                        <div class="p-4">
+                            <div clas="vr_of_category" style="border-bottom: solid 1px black;">Костя гей</div>
+
+                            <div class="answer_open"><div class="vr_of_question">15ч</div>25</div>
+                            <div class="answer_open"><div class="vr_of_question">15ч</div>25</div>
+                            <div class="answer_open"><div class="vr_of_question">15ч</div>25</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
         </div>
-      </footer>
-    
-   </body>
+    </div>
+
+    <div class="item">
+
+        <div class="slideText">
+            <div class="mainPRES" style="margin-left: 0px; margin-top: 6rem; height: 380px;">
+                    <div class="h-full border-opacity-60 rounded-lg overflow-hidden" style="border-radius: 20px;">
+                      <div>
+                          <div class="Title_of_question"><h2 class="tracking-widest text-black m-0" style="font-size: 21px;">На сколько долго Костя сможет не смотреть аниме</h2></div>
+                        <div class="p-4">
+                            <div clas="vr_of_category" style="border-bottom: solid 1px black;">Костя гей</div>
+
+                            <div class="answer_open"><div class="vr_of_question">15ч</div>25</div>
+                            <div class="answer_open"><div class="vr_of_question">15ч</div>25</div>
+                            <div class="answer_open"><div class="vr_of_question">15ч</div>25</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        </div>
+    </div>
+
+    <a class="prev" onclick="minusSlide()">&#10094;</a>
+    <a class="next" onclick="plusSlide()">&#10095;</a>
+</div>
+
+<div class="slider-dots">
+    <span class="slider-dots_item" onclick="currentSlide(1)"></span>
+    <span class="slider-dots_item" onclick="currentSlide(2)"></span>
+    <span class="slider-dots_item" onclick="currentSlide(3)"></span>
+</div>
+
+
+
+    {% include 'blocks/footer.html' %}
+    </div>
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   {% include 'blocks/bcanvas.html' %}
+
+
+</body>
 </html>

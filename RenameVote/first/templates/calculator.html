@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    {% include 'style.html' %}
+
+    <body>
+        {% include 'menu.html' %}
+        <h1>Сложение двух чисел</h1>
+        <hr/>
+        <span>{{ first_value }} + {{ second_value }} = {{ result }}</span>
+        <hr/>
+        <h2>История</h2>
+        <table border = '1px'>
+            <tr>
+                <td>ID's</td>
+                <td>Date</td>
+                <td>First Value</td>
+                <td>Second Value</td>
+                <td>Result</td>
+            </tr>
+            {% for item in data %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.date }}</td>
+                <td>{{ item.first }}</td>
+                <td>{{ item.second }}</td>
+                <td>{{ item.result }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

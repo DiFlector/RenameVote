@@ -1,141 +1,106 @@
-<!DOCTYPE HTML>
-<head>
-    <meta charset="utf-8">
-    <title>BRUhzdec</title>
-    <link rel="shortcut icon" href="icons/mainico.png" type="image/x-icon">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="main.css">
-   </head>
-   <body style="background: url(../img/IMG_20211105_153314.jpg) no-repeat ">
-    <nav class="flex items-center justify-between flex-wrap bg-black p-6 fixed w-full z-10 top-0">
-     <div class="flex items-center flex-shrink-0 text-white mr-6">
-       <a class="text-white no-underline hover:text-white hover:no-underline" href="index.html">
-         <span class="text-2xl pl-2"><i class="em em-grinning"></i> BRUHzdec</span>
-       </a>
-     </div>
- 
-     <div class="block lg:hidden">
-       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-white hover:border-white">
-         <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
-       </button>
-     </div>
- 
-     <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
-       <ul class="list-reset lg:flex justify-end flex-1 items-center">
-         <li class="mr-3">
-           <a class="inline-block py-2 px-4 text-white no-underline" href="index.html">Главная</a>
-         </li>
-         <li class="mr-3">
-           <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="../questions.html">Опросы</a>
-         </li>
-         <li class="mr-3">
-            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="aboutus.html">О нас</a>
-          </li>
-         <li class="mr-3">
-           <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="contacts.html">Контакты</a>
-         </li>
-         <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"><a href="autorization.html">Личный кабинет</a>
-             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-               <path d="M5 12h14M12 5l7 7-7 7"></path>
-             </svg>
-         </button>
-       </ul>
-     </div>
-   </nav>
- 
-   <script>
-    //Javascript to toggle the menu
-    document.getElementById('nav-toggle').onclick = function(){
-      document.getElementById("nav-content").classList.toggle("hidden");
-    }
-   </script>
 
 
 
-    <section class="text-gray-600 body-font bg-white" style="border-bottom: solid 1px black; margin-top: 100px;">
-        <div></div>
-        <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center" style="width: 80%;">
-        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-            <img class="object-cover object-center rounded shadow-2xl" alt="hero" src="img/newYEAR.png" style="border-radius: 15px;">
-        </div>
-        <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-            <br class="hidden lg:inline-block">
-            А вы знали, что…? Интересные факты про Новый год
-            </h1>
-            <p class="mb-8 leading-relaxed" style="font-size: 25px;">
-            перейти...
-            </p><div class="flex justify-center">
 
-            </div>
-        </div>
-        </div>
-    </section>
+    {% include 'blocks/header.html' %}
 
-    <section class="text-gray-600 body-font bg-white" style="border-bottom: solid 1px black;">
-        <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-          <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-            <img class="object-cover object-center rounded shadow-2xl" alt="hero" src="img/bruh.jpg">
-          </div>
-          <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-              <br class="hidden lg:inline-block">
-              BRUHzdec
-            </h1>
-            <p class="mb-8 leading-relaxed" style="font-size: 25px;">
-              Популярные статьи на любую тему
-            </p><div class="flex justify-center">
 
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="text-gray-600 body-font bg-gray-100" style="border-bottom: solid 1px black;">
-        <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-            <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-                  <br class="hidden lg:inline-block">
+    <div class="container px-5 py-24 mx-auto bg-white" style="border-bottom: #2c2c2c solid 5px; border-top: white solid 25px; --tw-bg-opacity: 0.3">
 
-                </h1>
-                <p class="mb-8 leading-relaxed" style="font-size: 25px; width: 300px;">
-                  Корреспонденты сайта BRUHzdec уже засветились во всех уголках галактики
-                </p><div class="flex justify-center">
+
+            <div class="GHJcont" style="display:inline-block; float: left;">
+                <div class="bg-white p-8 flex  flex-col md:mr-auto ml-auto w-full mt-10 md:mt-0" style="width: 100%; border-radius: 9px; --tw-bg-opacity: 0.9">
+                    <form action="vendor/signin.php" method="post">
+
+                        <input type="text" name="login" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="логин">
+
+                        <input type="password" name="password" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="пароль">
+
+                            <a class="btn btn-default action-button" role="button" style="margin-top: 15px;" href="/profile">Авторизироваться</a>
+                            </form>
+                        <p>
+                            У вас нет аккаунта? - <a href="/registration.html">зарегистрируйтесь</a>!
+                        </p>
+                        <p class="msg none">Lorem ipsum dolor sit amet.</p>
+
                 </div>
-              </div>
-          <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-            <img class="object-cover object-center rounded shadow-2xl" alt="hero" src="img/cor.jpeg">
-          </div>
-        </div>
-      </section>
-          
+            </div>
+                  <div class="popularPRES ">
+                    <div class="h-full border-opacity-60 rounded-lg overflow-hidden">
 
-        <footer class="text-gray-50 body-font">
-         <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
- 
-                 <span class="ml-3 text-xl text-black-50">BRUHzdec</span>
-               </a>
-          
-           <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-             <a href="https://www.instagram.com/modatel_atelier/" class="text-gray-500">
-                 <img class="w-10 h-10" src="icons/instagram_48px.png">
-             </a>
-             <a href="https://tele.click/modatelru" class="ml-3 text-gray-500">
-               <img class="w-10 h-10" src="icons/telegram_app_48px.png">
-             </a>
-             <a href="https://wa.me/79630344555" class="ml-3 text-gray-500">
-               <img class="w-10 h-10" src="icons/whatsapp_48px.png">
-             </a>
-           </span>
-         </div>
-       </footer>
- 
-       <script src="assets/js/jquery-3.4.1.min.js"></script>
-     <script src="assets/js/main.js"></script>
+                      <div class="p-6" style="border-top: solid 35px black;">
+                        <h2 class="tracking-widest text-black m-0" style="font-size: 30px;">BRUHzdec</h2>
+                        <h1 class="text-black mt-5" style="font-size: 14px;">быстро, ново, надёжно</h1>
+                        <p class="leading-relaxed mb-3" style="font-size: 21px;">Сайт BRUHZdec, здесь вы найдёте все самые свежие новости 2220-го года и не только!</p>
+                      </div>
+                    </div>
+                  </div>
 
- 
-  
- 
- </body>
- </html>
+
+    </div>
+    <div class="container px-5 py-24 mx-auto bg-black" style="--tw-bg-opacity: 0.3">
+        <div class="bg-white under_pol"></div>
+        <div class="bg-white down_pol">NEWS</div>
+                  <div class="mainPRES">
+                    <div class="h-full border-opacity-60 rounded-lg overflow-hidden" style="border-radius: 20px;">
+                      <img class="mainpageIMG object-cover object-center" src="https://static.dw.com/image/56289669_303.jpg" style="border-bottom: solid 10px white;" alt="blog">
+                      <div class="p-6" >
+                        <h2 class="tracking-widest text-black m-0" style="font-size: 21px;">Аквадискотека</h2>
+                        <h1 class="text-black mt-5" style="font-size: 14px;">Что задумал путин???</h1>
+                        <p class="leading-relaxed mb-3 text-3xl">Засекреченная информация о так называемом "Дворце путина, вновь актуальна..."</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mainPRES">
+                    <div class="h-full border-opacity-60 rounded-lg overflow-hidden" style="border-radius: 20px;">
+                      <img class="mainpageIMG object-cover object-center" src="https://c.tenor.com/R5FwpmbB9x8AAAAM/belarus-lukashenko.gif" style="border-bottom: solid 10px white" alt="blog">
+                      <div class="p-6">
+                        <h2 class="tracking-widest text-black m-0" style="font-size: 21px;">Автомат, который стреляет картошкой</h2>
+                        <h1 class="text-black mt-5" style="font-size: 14px;">Иновационные технологии???</h1>
+                        <p class="leading-relaxed mb-3 text-3xl">В белоруси впервые провели полевые испытания новейшего картофелемёта под названием - "я не уйду, пока не скажет нород"</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+                  <div class="mainPRES">
+                    <div class="h-full border-opacity-60 rounded-lg overflow-hidden" style="border-radius: 20px;">
+                      <img class="mainpageIMG object-cover object-center" src="data:image/jpeg;base64,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" style="border-bottom: solid 10px white" alt="blog">
+                      <div class="p-6">
+                        <h2 class="tracking-widest text-black m-0" style="font-size: 21px;">Хто я... заявил Зеленский и ушёл воевать на Донбасс</h2>
+                        <h1 class="text-black mt-5" style="font-size: 14px;">Прозападная угроза???</h1>
+                        <p class="leading-relaxed mb-3 text-3xl">Именно так выразился президент, перед тем, как сесть в буханку</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mainPRES">
+                    <div class="h-full border-opacity-60 rounded-lg overflow-hidden" style="border-radius: 20px;">
+                      <img class="mainpageIMG object-cover object-center" src="data:image/jpeg;base64,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" style="border-bottom: solid 10px white" alt="blog">
+                      <div class="p-6">
+                        <h2 class="tracking-widest text-black m-0" style="font-size: 21px;">Вкусные эчпочмаки</h2>
+                        <h1 class="text-black mt-5" style="font-size: 14px;">Вкусно, или вкусно???</h1>
+                        <p class="leading-relaxed mb-3 text-3xl">Вновь в сеть всплыли Эчпочмаки, сегодня же наш корреспондент проверит, действительно ли они вкусные"</p>
+                      </div>
+                    </div>
+                  </div>
+    </div>
+
+
+
+
+
+    {% include 'blocks/footer.html' %}
+    </div>
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   {% include 'blocks/bcanvas.html' %}
+
+
+</body>
+</html>

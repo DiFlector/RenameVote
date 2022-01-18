@@ -1,58 +1,186 @@
-<!DOCTYPE HTML>
-<head>
-    <meta charset="utf-8">
-    <title>BRUhzdec</title>
-    <link rel="shortcut icon" href="icons/mainico.png" type="image/x-icon">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="main.css">
-   </head>
-   <body>
 
-    <div class="container px-5 py-24 mx-auto" style="margin-top: 150px;">
-        <section class="text-gray-600 body-font">
-            <div class="container">
-                <div class="lg:w-1/2 md:w-1/2 bg-gray-100  p-8 flex flex-col md:mr-auto ml-auto w-full mt-10 md:mt-0" style="border-radius: 9px;">
-                    <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Персональные данные</h2>
-                    <div class="relative mb-4">
-                        <label for="full-name" class="leading-7 text-sm text-gray-600">ФИО</label>
-                        <input value="leonid" type="text" id="full-name" name="full-name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                    </div>
-                    <div class="relative mb-4">
-                        <label for="email" class="leading-7 text-sm text-gray-600">E-mail</label>
-                        <input value="larleonxgroup123@gmail.com" type="email" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                    </div>
-                    <div class="relative mb-4">
-                        <label for="telep" class="leading-7 text-sm text-gray-600">Телефон</label>
-                        <input value="+7-(965)-544-62-97" type="text" id="telep" name="telep" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                    </div>
 
-                    <a href="../index.html" class="logout">Выход</a>
-                </div>
+
+
+    {% include 'blocks/header.html' %}
+
+
+    <style>
+    :root {
+        --main-color: #4a76a8;
+    }
+
+    .bg-main-color {
+        background-color: var(--main-color);
+    }
+
+    .text-main-color {
+        color: var(--main-color);
+    }
+
+    .border-main-color {
+        border-color: var(--main-color);
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+
+
+<div class="container md:w-full px-5 py-24 mx-auto bg-white" style="height: auto; padding-bottom: 6rem;">
+ <div class="w-full text-white bg-black">
+        <div x-data="{ open: false }"
+            class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+            <div class="p-4 flex flex-row items-center justify-between">
+
+
             </div>
-        </section>
+            <nav :class="{'flex': open, 'hidden': !open}"
+                class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+                <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                    <button @click="open = !open"
+                        class="flex flex-row items-center space-x-2 w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent hover:bg-blue-800 md:w-auto md:inline md:mt-0 md:ml-4 hover:bg-gray-200 focus:bg-blue-800 focus:outline-none focus:shadow-outline">
+                        <span>Jane Doe</span>
+                        <img class="inline h-6 rounded-full"
+                            src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4">
+                        <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}"
+                            class="inline w-4 h-4 transition-transform duration-200 transform">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- End of Navbar -->
+
+    <div class="container mx-auto my-5 p-5">
+        <div class="md:flex no-wrap md:-mx-2 ">
+            <!-- Left Side -->
+            <div class="w-full md:w-3/12 md:mx-2">
+                <!-- Profile Card -->
+                <div class="bg-white p-3 border-t-4 border-gray-400">
+                    <div class="image overflow-hidden">
+                        <img class="h-auto w-full mx-auto"
+                            src="https://i.ibb.co/cFXBm8M/kostyagay.png"
+                            alt="">
+                    </div>
+                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{ author }}</h1>
+
+                    <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">{{ status }}</p>
+                    <ul
+                        class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                        <li class="flex items-center py-3">
+                            <span>Status</span>
+                            <span class="ml-auto"><span
+                                    class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
+                        </li>
+                        <li class="flex items-center py-3">
+                            <span>Зарегистрирован</span>
+                            <span class="ml-auto">26 ноября 2220</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End of profile card -->
+                <div class="my-4"></div>
+                <!-- Friends card -->
+                <div class="bg-white p-3 hover:shadow">
+                    <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8">
+                        <span class="text-green-500">
+                            <svg class="h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </span>
+                        <span>Друзья</span>
+                    </div>
+                    <div class="grid grid-cols-3">
+                        ДРУЗЕЙ НЕТ
+
+                    </div>
+                </div>
+                <!-- End of friends card -->
+            </div>
+            <!-- Right Side -->
+            <div class="w-full md:w-full mx-2 h-64" style="height: auto;">
+                <!-- Profile tab -->
+                <!-- About Section -->
+                <div class="bg-white p-3 shadow-sm rounded-sm">
+                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                        <span clas="text-green-500">
+                            <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                        </span>
+                        <span class="tracking-wide">О Диком</span>
+                    </div>
+                    <div class="text-gray-700">
+                        <div class="grid md:grid-cols-2" style="font-size: 13px;">
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">ФИО</div>
+                                <div class="px-4 py-2">Костя Дикий Прожорливый</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Пол</div>
+                                <div class="px-4 py-2">рептилоид</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Телефон</div>
+                                <div class="px-4 py-2">+6 666 666 66 66</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Адрес проживания</div>
+                                <div class="px-4 py-2">МАЙАМИ БИЧИ</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Неофициальный адрес</div>
+                                <div class="px-4 py-2">МКАД</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Email.</div>
+                                <div class="px-4 py-2">
+                                    <a class="text-blue-800" href="mailto:jane@example.com">gay228@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">ДР</div>
+                                <div class="px-4 py-2">неизвестно, когда зародилось это существо</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of about section -->
+
+                <div class="my-4"></div>
+
+                <!-- Experience and education -->
+
+                <!-- End of profile tab -->
+            </div>
+        </div>
+    </div>
+    <div style="float: right; margin-right: 25px; color: red;"><a href="/index">Выход</a></div>
+</div>
+
+
+
+
+    {% include 'blocks/footer.html' %}
     </div>
 
-    <footer class="text-gray-50 body-font">
-        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
 
-                <span class="ml-3 text-xl text-black-50">BRUHzdec</span>
-              </a>
-         
-          <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-            <a href="https://www.instagram.com/modatel_atelier/" class="text-gray-500">
-                <img class="w-10 h-10" src="icons/instagram_48px.png">
-            </a>
-            <a href="https://tele.click/modatelru" class="ml-3 text-gray-500">
-              <img class="w-10 h-10" src="icons/telegram_app_48px.png">
-            </a>
-            <a href="https://wa.me/79630344555" class="ml-3 text-gray-500">
-              <img class="w-10 h-10" src="icons/whatsapp_48px.png">
-            </a>
-          </span>
-        </div>
-      </footer>
 
-    </body>
-    </html>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   {% include 'blocks/bcanvas.html' %}
+
+
+</body>
+</html>
