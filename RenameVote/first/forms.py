@@ -8,3 +8,8 @@ class RegistrationForm(forms.Form):
     phone = forms.CharField()
     password = forms.CharField()
     confirm_password = forms.CharField()
+
+
+class AuthorizationForm(forms.Form):
+    login = forms.CharField()
+    password = forms.CharField()

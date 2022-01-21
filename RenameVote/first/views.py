@@ -2,7 +2,7 @@ import datetime
 from django.shortcuts import render
 from first.backend.Database import database
 from first.forms import RegistrationForm
-
+from first.forms import AuthorizationForm
 
 def index_page(request):
     context = {}
@@ -23,7 +23,31 @@ def Kostyagay_page(request):
 
 
 def autorization_page(request):
-    context = {}
+    correct_password = True
+    correct_login = True
+    success = True
+
+    if request.method == 'POST':
+        form = AuthorizationForm(request.POST)
+
+        if not form.is_valid():
+            success = False
+        elif not database.exists_with_login(form.data['login']):
+            correct_login = False
+        elif database.get_client_with_login(form.data['login']).password != form.data['password']:
+            correct_password = False
+        else:
+            pass
+            # TODO
+    else:
+        form = AuthorizationForm()
+
+    context = {
+        'correct_password': correct_password,
+        'correct_login': correct_login,
+        'success': success,
+        'form': form,
+    }
 
     return render(request, 'autorization.html', context)
 
@@ -32,7 +56,6 @@ def registration_page(request):
     correct = False
     correct_password = True
     new = True
-    form = None
 
     print('Registration')
 

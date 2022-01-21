@@ -28,5 +28,13 @@ class Database:
 
         return False
 
+    def get_client_with_login(self, login: str):
+        if not self.exists_with_login(login):
+            return None
+
+        for client in self.clients:
+            if client.login == login:
+                return client
+
 
 database = Database()
