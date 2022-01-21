@@ -28,8 +28,5 @@ urlpatterns = [
     path('autorization', views.autorization_page),
     path('registration', views.registration_page),
     path('profile', views.profile_page),
-    path('kostyagay', views.Kostyagay_page)
+    path('kostyagay', views.Kostyagay_page),
 ]
-
-
-

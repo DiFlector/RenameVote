@@ -1,10 +1,10 @@
-from AnswerVariant import *
-from Database import Database
+from first.backend.Voting import *
 
 
 class Client:
-    def __init__(self, name: str, client_id: int, phone: str, email: str, description=''):
+    def __init__(self, name: str, client_id: int, phone: str, login: str, email: str, description=''):
         self.name = name
+        self.login = login
         self.description = description
         self.phone = phone
         self.email = email
@@ -26,7 +26,7 @@ class Client:
     def add_answer_data(self, voting_index: int, date: datetime, answers: List[AnswerVariant]):
         self.answers.append(AnswerData(voting_index, date, answers))
 
-    def get_votings(self, database: Database):
+    def get_votings(self, database):
         res = []
 
         for voting in database.votings:
@@ -34,3 +34,6 @@ class Client:
                 res.append(voting)
 
         return res
+
+    def check_client(self):
+        return len(self.name) > 0 and len(self.login) > 0 and len(self.email) > 0 and self.id >= 0 and len(self.phone)

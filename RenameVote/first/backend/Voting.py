@@ -1,4 +1,4 @@
-from AnswerVariant import *
+from first.backend.AnswerVariant import *
 
 
 class Voting:
