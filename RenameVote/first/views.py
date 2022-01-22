@@ -1,8 +1,9 @@
 import datetime
 from django.shortcuts import render
-from first.backend.Database import database
 from first.forms import RegistrationForm
 from first.forms import AuthorizationForm
+from first.models import ClientModel
+
 
 def index_page(request):
     context = {}
@@ -53,33 +54,33 @@ def autorization_page(request):
 
 
 def registration_page(request):
-    correct = False
+    success = True
     correct_password = True
     new = True
 
-    print('Registration')
-
     if request.method == 'POST':
-        print('Post request')
-
         form = RegistrationForm(request.POST)
-        client = database.create_client(form.data['name'], form.data['phone'], form.data['login'], form.data['email'])
 
-        if database.exists_with_login(form.data['login']):
+        if not form.is_valid():
+            success = False
+        elif ClientModel.objects.exists_client_with_login(form.data['login']):
             new = False
         elif form.data['password'] != form.data['confirm_password']:
             correct_password = False
-            print("Uncorrected password")
-        elif client.check_client():
-            database.add_client(client)
-            correct = True
-            print('Client was successfully added')
+        else:
+            client = ClientModel(name=form.data['name'], phone=form.data['phone'],
+                                 login=form.data['login'], email=form.data['email'])
+
+            if client.is_valid():
+                client.save()
+                print('Client was successfully added')
+            else:
+                success = False
     else:
         form = RegistrationForm()
-        correct = True
 
     context = {
-        'correct': correct,
+        'correct': success,
         'correct_password': correct_password,
         'new': new,
         'form': form

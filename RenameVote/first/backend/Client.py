@@ -10,7 +10,7 @@ class Client:
         self.email = email
 
         # Server data
-        self.votings_indexes = List[int]
+        self.voting_indexes = List[int]
         self.answers = List[AnswerData]
         self.id = client_id
 
