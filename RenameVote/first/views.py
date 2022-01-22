@@ -33,9 +33,9 @@ def autorization_page(request):
 
         if not form.is_valid():
             success = False
-        elif not database.exists_with_login(form.data['login']):
+        elif not ClientModel.objects.exists_client_with_login(form.data['login']):
             correct_login = False
-        elif database.get_client_with_login(form.data['login']).password != form.data['password']:
+        elif ClientModel.objects.get_client_with_login(form.data['login']).password != form.data['password']:
             correct_password = False
         else:
             pass

@@ -2,10 +2,6 @@ from django.db import models
 
 
 class ClientManager(models.Manager):
-    def create_client(self, name: str, login: str, email: str, phone: str):
-        client = ClientModel.create(self.count(), name, login, email, phone)
-        return client
-
     def exists_client_with_login(self, login: str):
         for client in self.all():
             if client.login == login:
