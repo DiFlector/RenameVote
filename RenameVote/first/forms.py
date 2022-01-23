@@ -13,3 +13,11 @@ class RegistrationForm(forms.Form):
 class AuthorizationForm(forms.Form):
     login = forms.CharField()
     password = forms.CharField()
+
+
+class VotingForm(forms.Form):
+    name = forms.CharField()
+
+
+class AnswerForm(forms.Form):
+    text = forms.CharField()

@@ -2,7 +2,8 @@ import datetime
 from django.shortcuts import render
 from first.forms import RegistrationForm
 from first.forms import AuthorizationForm
-from first.models import ClientModel
+from first.models import ClientModel, VotingModel
+from first.forms import VotingForm
 
 
 def index_page(request):
@@ -12,7 +13,22 @@ def index_page(request):
 
 
 def questions_page(request):
-    context = {}
+    success = True
+
+    if request.method == 'POST':
+        form = VotingForm(request.POST)
+
+        voting = VotingModel()
+
+        if not form.is_valid():
+            success = False
+    else:
+        form = VotingForm()
+
+    context = {
+        'success': success,
+        'form': form
+    }
 
     return render(request, 'questions.html', context)
 
