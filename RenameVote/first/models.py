@@ -1,17 +1,18 @@
 from django.db import models
+from django.contrib.auth.models import User, UserManager
 
 
-class ClientManager(models.Manager):
+class ClientManager(UserManager):
     def exists_client_with_login(self, login: str):
         for client in self.all():
-            if client.login == login:
+            if client.login2 == login:
                 return True
 
         return False
 
     def get_client_with_login(self, login: str):
         for client in self.all():
-            if client.login == login:
+            if client.login2 == login:
                 return client
 
         return None
@@ -31,19 +32,18 @@ class ClientManager(models.Manager):
         return None
 
 
-class ClientModel(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=64)
-    login = models.CharField(max_length=64)
-    email = models.EmailField(max_length=64)
-    phone = models.CharField(max_length=32)
-    password = models.CharField(max_length=32)
+class ClientModel(User):
+    name2 = models.CharField(max_length=64)
+    phone2 = models.CharField(max_length=32)
+    login2 = models.CharField(max_length=64)
+    email2 = models.EmailField()
+    password2 = models.CharField(max_length=64)
     objects = ClientManager()
 
     @classmethod
     def is_valid(cls):
-        return cls.name != "" and cls.login != "" and cls.email != ""\
-                and cls.phone != "" and cls.password != ""
+        return cls.name2 != "" and cls.login2 != "" and cls.email2 != ""\
+                and cls.phone2 != "" and cls.password2 != ""
 
 
 class AnswerHistoryModel(models.Model):

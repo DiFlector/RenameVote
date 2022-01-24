@@ -10,18 +10,16 @@
 
             <div class="GHJcont" style="display:inline-block; float: left;">
                 <div class="bg-white p-8 flex  flex-col md:mr-auto ml-auto w-full mt-10 md:mt-0" style="width: 100%; border-radius: 9px; --tw-bg-opacity: 0.9">
-                    <form action="vendor/signin.php" method="post">
+                    <form action="index" method="post">
+                        {% csrf_token %}
+                        {{ form }}
 
-                        <input type="text" name="login" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="логин">
-
-                        <input type="password" name="password" style="margin-top: 20px; height: 40px; padding: 8px;" placeholder="пароль">
-
-                            <a class="btn btn-default action-button" role="button" style="margin-top: 15px;" href="/profile">Авторизироваться</a>
-                            </form>
-                        <p>
-                            У вас нет аккаунта? - <a href="/registration.html">зарегистрируйтесь</a>!
-                        </p>
-                        <p class="msg none">Lorem ipsum dolor sit amet.</p>
+                        <input type="submit" name="click" placeholder="Авторизироваться" style="margin-top: 15px;">
+                    </form>
+                    <p>
+                        У вас нет аккаунта? - <a href="/registration.html">зарегистрируйтесь</a>!
+                    </p>
+                    <p class="msg none">Lorem ipsum dolor sit amet.</p>
 
                 </div>
             </div>

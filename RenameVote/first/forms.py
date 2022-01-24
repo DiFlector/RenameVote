@@ -16,6 +16,7 @@ class AuthorizationForm(forms.Form):
 
 
 class VotingForm(forms.Form):
+    type = forms.BooleanField()
     name = forms.CharField()
 
 

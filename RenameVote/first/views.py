@@ -5,9 +5,39 @@ from first.forms import AuthorizationForm
 from first.models import ClientModel, VotingModel
 from first.forms import VotingForm
 from django.shortcuts import redirect
+from django.contrib.auth import authenticate
+
 
 def index_page(request):
-    context = {}
+    correct_password = True
+    correct_login = True
+    success = True
+
+    print('Index')
+
+    if request.method == 'POST':
+        form = AuthorizationForm(request.POST)
+
+        if not form.is_valid():
+            success = False
+            print('Index invalid form')
+        elif not ClientModel.objects.exists_client_with_login(form.data['login']):
+            correct_login = False
+            print('Index no such client')
+        elif not ClientModel.objects.get_client_with_login(form.data['login']).check_password(form.data['password']):
+            correct_password = False
+            print('Index incorrect password')
+        else:
+            print('User with login ' + form.data['login'] + ' successfully authorized')
+    else:
+        form = AuthorizationForm()
+
+    context = {
+        'correct_password': correct_password,
+        'correct_login': correct_login,
+        'success': success,
+        'form': form,
+    }
 
     return render(request, 'index.html', context)
 
@@ -21,12 +51,7 @@ def questions_page(request):
         if not form.is_valid():
             success = False
         else:
-            voting_owner_id = request.COOKIES.get('user_id')
-
-            if voting_owner_id is None:
-                voting_owner_id = -1
-
-            voting = VotingModel(type=form.data['type'], owner_id=voting_owner_id,
+            voting = VotingModel(type=form.data['type'], owner_id=-1,
                                  name=form.data['name'], date=datetime.datetime.now())
 
             if not voting.is_valid():
@@ -53,30 +78,7 @@ def gay_page(request):
 
 
 def authorization_page(request):
-    correct_password = True
-    correct_login = True
-    success = True
-
-    if request.method == 'POST':
-        form = AuthorizationForm(request.POST)
-
-        if not form.is_valid():
-            success = False
-        elif not ClientModel.objects.exists_client_with_login(form.data['login']):
-            correct_login = False
-        elif ClientModel.objects.get_client_with_login(form.data['login']).password != form.data['password']:
-            correct_password = False
-        else:
-            print('User with login ' + form.data['login'] + ' successfully authorized')
-    else:
-        form = AuthorizationForm()
-
-    context = {
-        'correct_password': correct_password,
-        'correct_login': correct_login,
-        'success': success,
-        'form': form,
-    }
+    context = {}
 
     return render(request, 'autorization.html', context)
 
@@ -93,11 +95,15 @@ def registration_page(request):
             success = False
         elif ClientModel.objects.exists_client_with_login(form.data['login']):
             new = False
-        elif form.data['password'] != form.data['confirm_password']:
+        elif not ClientModel.objects.get_client_with_login(form.data['login']).check_password(form.data['password']):
             correct_password = False
         else:
-            client = ClientModel(name=form.data['name'], phone=form.data['phone'],
-                                 login=form.data['login'], email=form.data['email'])
+            client = ClientModel.objects.create_user(username=form.data['login'],
+                                                     name2=form.data['name'], phone2=form.data['phone'],
+                                                     login2=form.data['login'], email2=form.data['email'])
+
+            client.set_password(form.data['password'])
+            client.password2 = client.password
 
             if client.is_valid():
                 client.save()
