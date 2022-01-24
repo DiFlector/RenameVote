@@ -16,20 +16,29 @@ class ClientManager(models.Manager):
 
         return None
 
+    def exists_client_with_id(self, index: int):
+        for client in self.all():
+            if client.id == index:
+                return True
+
+        return False
+
+    def get_client_with_id(self, index: int):
+        for client in self.all():
+            if client.id == index:
+                return client
+
+        return None
+
 
 class ClientModel(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=64)
     login = models.CharField(max_length=64)
     email = models.EmailField(max_length=64)
-    phone = models.CharField(max_length=16)
-    password = models.CharField(max_length=16)
+    phone = models.CharField(max_length=32)
+    password = models.CharField(max_length=32)
     objects = ClientManager()
-
-    @classmethod
-    def create(cls, id_num: int, name: str, login: str, email: str, phone: str):
-        client = cls(str, id_num, name, login, email, phone)
-        return client
 
     @classmethod
     def is_valid(cls):
@@ -37,20 +46,38 @@ class ClientModel(models.Model):
                 and cls.phone != "" and cls.password != ""
 
 
-class VotingModel(models.Model):
+class AnswerHistoryModel(models.Model):
     client = models.ForeignKey(ClientModel, on_delete=models.CASCADE)
     id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=256)
-
-
-class AnswerDataModel(models.Model):
-    voting = models.ForeignKey(VotingModel, on_delete=models.CASCADE)
-    id = models.IntegerField(primary_key=True)
+    voting_id = models.IntegerField()
     date = models.DateTimeField()
 
 
+class AnswerHistoryElementModel(models.Model):
+    history = models.ForeignKey(AnswerHistoryModel, on_delete=models.CASCADE)
+    id = models.IntegerField(primary_key=True)
+    index = models.IntegerField()
+
+
+class VotingModel(models.Model):
+    type = models.BooleanField()
+    id = models.IntegerField(primary_key=True)
+    owner_id = models.IntegerField()
+    name = models.CharField(max_length=128)
+    date = models.DateTimeField()
+
+    @classmethod
+    def is_valid(cls):
+        return name != '' and owner_id >= -1
+
+
 class AnswerVariantModel(models.Model):
-    answer_data = models.ForeignKey(AnswerDataModel, on_delete=models.CASCADE)
+    voting = models.ForeignKey(VotingModel, on_delete=models.CASCADE)
     id = models.IntegerField(primary_key=True)
     text = models.CharField(max_length=64)
-    chosen = models.BooleanField()
+
+
+class AnswerDataModel(models.Model):
+    id = models.IntegerField(primary_key=True)
+    answer = models.ForeignKey(AnswerVariantModel, on_delete=models.CASCADE)
+    voted_client_id = models.IntegerField()

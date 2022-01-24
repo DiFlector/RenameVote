@@ -4,7 +4,7 @@ from first.forms import RegistrationForm
 from first.forms import AuthorizationForm
 from first.models import ClientModel, VotingModel
 from first.forms import VotingForm
-
+from django.shortcuts import redirect
 
 def index_page(request):
     context = {}
@@ -18,10 +18,23 @@ def questions_page(request):
     if request.method == 'POST':
         form = VotingForm(request.POST)
 
-        voting = VotingModel()
-
         if not form.is_valid():
             success = False
+        else:
+            voting_owner_id = request.COOKIES.get('user_id')
+
+            if voting_owner_id is None:
+                voting_owner_id = -1
+
+            voting = VotingModel(type=form.data['type'], owner_id=voting_owner_id,
+                                 name=form.data['name'], date=datetime.datetime.now())
+
+            if not voting.is_valid():
+                success = False
+            else:
+                print('Voting successfully added')
+                voting.save()
+
     else:
         form = VotingForm()
 
@@ -33,13 +46,13 @@ def questions_page(request):
     return render(request, 'questions.html', context)
 
 
-def Kostyagay_page(request):
+def gay_page(request):
     context = {}
 
     return render(request, 'Kostyagay.html', context)
 
 
-def autorization_page(request):
+def authorization_page(request):
     correct_password = True
     correct_login = True
     success = True
@@ -54,8 +67,7 @@ def autorization_page(request):
         elif ClientModel.objects.get_client_with_login(form.data['login']).password != form.data['password']:
             correct_password = False
         else:
-            pass
-            # TODO
+            print('User with login ' + form.data['login'] + ' successfully authorized')
     else:
         form = AuthorizationForm()
 
@@ -106,7 +118,16 @@ def registration_page(request):
 
 
 def profile_page(request):
-    context = {}
+    success = True
+
+    if request.method == 'POST':
+        pass
+    else:
+        success = False
+
+    context = {
+        'success': success,
+    }
 
     return render(request, 'profile.html', context)
 

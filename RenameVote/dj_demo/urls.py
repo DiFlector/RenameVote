@@ -25,8 +25,8 @@ urlpatterns = [
     path('calc', views.calc_page),
     path('questions', views.questions_page),
     path('news', views.news_page),
-    path('autorization', views.autorization_page),
+    path('autorization', views.authorization_page),
     path('registration', views.registration_page),
     path('profile', views.profile_page),
-    path('kostyagay', views.Kostyagay_page),
+    path('kostyagay', views.gay_page),
 ]
