@@ -5,7 +5,7 @@ from first.forms import AuthorizationForm
 from first.models import ClientModel, VotingModel
 from first.forms import VotingForm
 from django.shortcuts import redirect
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 
 
 def index_page(request):
@@ -23,12 +23,15 @@ def index_page(request):
             print('Index invalid form')
         elif not ClientModel.objects.exists_client_with_login(form.data['login']):
             correct_login = False
-            print('Index no such client')
+            print('Index no such client with login ' + form.data['login'])
         elif not ClientModel.objects.get_client_with_login(form.data['login']).check_password(form.data['password']):
             correct_password = False
             print('Index incorrect password')
         else:
+            user = authenticate(request, username=form.data['login'], password=form.data['password'])
+            login(request, user)
             print('User with login ' + form.data['login'] + ' successfully authorized')
+            return redirect('/profile')
     else:
         form = AuthorizationForm()
 
@@ -88,19 +91,25 @@ def registration_page(request):
     correct_password = True
     new = True
 
+    print('Registration page')
+
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
+
+        print('Registration POST')
 
         if not form.is_valid():
             success = False
         elif ClientModel.objects.exists_client_with_login(form.data['login']):
             new = False
-        elif not ClientModel.objects.get_client_with_login(form.data['login']).check_password(form.data['password']):
+        elif form.data['confirm_password'] != form.data['password']:
             correct_password = False
         else:
             client = ClientModel.objects.create_user(username=form.data['login'],
                                                      name2=form.data['name'], phone2=form.data['phone'],
                                                      login2=form.data['login'], email2=form.data['email'])
+
+            print('Try add client')
 
             client.set_password(form.data['password'])
             client.password2 = client.password
@@ -108,7 +117,11 @@ def registration_page(request):
             if client.is_valid():
                 client.save()
                 print('Client was successfully added')
+                user = authenticate(request, username=form.data['login'], password=form.data['password'])
+                login(request, user)
+                return redirect('profile')
             else:
+                print('Registration fault')
                 success = False
     else:
         form = RegistrationForm()
@@ -125,14 +138,20 @@ def registration_page(request):
 
 def profile_page(request):
     success = True
+    name = 'Anonymous'
+    email = '-'
+    phone = '-'
 
-    if request.method == 'POST':
-        pass
-    else:
-        success = False
+    if request.user.is_authenticated:
+        name = ClientModel.objects.get_client_with_login(request.user.username).name2
+        email = request.user.email
+        phone = ClientModel.objects.get_client_with_login(request.user.username).phone2
 
     context = {
         'success': success,
+        'name': name,
+        'email': email,
+        'phone': phone,
     }
 
     return render(request, 'profile.html', context)

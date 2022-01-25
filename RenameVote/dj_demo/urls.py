@@ -26,7 +26,7 @@ urlpatterns = [
     path('questions', views.questions_page),
     path('news', views.news_page),
     path('autorization', views.authorization_page),
-    path('registration', views.registration_page),
-    path('profile', views.profile_page),
+    path('registration/', views.registration_page, name='registration'),
+    path('profile/', views.profile_page, name='profile'),
     path('kostyagay', views.gay_page),
 ]
