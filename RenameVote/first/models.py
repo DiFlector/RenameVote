@@ -39,6 +39,7 @@ class ClientModel(User):
     email2 = models.EmailField()
     password2 = models.CharField(max_length=64)
     objects = ClientManager()
+    registration_date = models.DateTimeField()
 
     @classmethod
     def is_valid(cls):

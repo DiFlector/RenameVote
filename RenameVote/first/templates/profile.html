@@ -80,7 +80,7 @@
                         </li>
                         <li class="flex items-center py-3">
                             <span>Зарегистрирован</span>
-                            <span class="ml-auto">26 ноября 2220</span>
+                            <span class="ml-auto">{{registration_date}}</span>
                         </li>
                     </ul>
                 </div>
@@ -124,33 +124,17 @@
                         <div class="grid md:grid-cols-2" style="font-size: 13px;">
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">ФИО</div>
-                                <div class="px-4 py-2">Костя Дикий Прожорливый</div>
-                            </div>
-                            <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">Пол</div>
-                                <div class="px-4 py-2">рептилоид</div>
+                                <div class="px-4 py-2">{{name}}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Телефон</div>
-                                <div class="px-4 py-2">+6 666 666 66 66</div>
+                                <div class="px-4 py-2">{{phone}}</div>
                             </div>
                             <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">Адрес проживания</div>
-                                <div class="px-4 py-2">МАЙАМИ БИЧИ</div>
-                            </div>
-                            <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">Неофициальный адрес</div>
-                                <div class="px-4 py-2">МКАД</div>
-                            </div>
-                            <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">Email.</div>
+                                <div class="px-4 py-2 font-semibold">Email</div>
                                 <div class="px-4 py-2">
-                                    <a class="text-blue-800" href="mailto:jane@example.com">gay228@gmail.com</a>
+                                    <a class="text-blue-800" href="mailto:jane@example.com">{{email}}</a>
                                 </div>
-                            </div>
-                            <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">ДР</div>
-                                <div class="px-4 py-2">неизвестно, когда зародилось это существо</div>
                             </div>
                         </div>
                     </div>

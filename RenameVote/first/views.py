@@ -100,14 +100,18 @@ def registration_page(request):
 
         if not form.is_valid():
             success = False
+            print('Registration invalid form')
         elif ClientModel.objects.exists_client_with_login(form.data['login']):
             new = False
+            print('Client with such login already exists')
         elif form.data['confirm_password'] != form.data['password']:
             correct_password = False
+            print('Incorrect passwords')
         else:
             client = ClientModel.objects.create_user(username=form.data['login'],
                                                      name2=form.data['name'], phone2=form.data['phone'],
-                                                     login2=form.data['login'], email2=form.data['email'])
+                                                     login2=form.data['login'], email2=form.data['email'],
+                                                     registration_date=datetime.datetime.today())
 
             print('Try add client')
 
@@ -141,17 +145,20 @@ def profile_page(request):
     name = 'Anonymous'
     email = '-'
     phone = '-'
+    registration_date = '-'
 
     if request.user.is_authenticated:
         name = ClientModel.objects.get_client_with_login(request.user.username).name2
-        email = request.user.email
+        email = ClientModel.objects.get_client_with_login(request.user.username).email2
         phone = ClientModel.objects.get_client_with_login(request.user.username).phone2
+        registration_date = ClientModel.objects.get_client_with_login(request.user.username).registration_date
 
     context = {
         'success': success,
         'name': name,
         'email': email,
         'phone': phone,
+        'registration_date': registration_date
     }
 
     return render(request, 'profile.html', context)
